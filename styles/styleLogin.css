@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    min-width: 360px;
+    min-height: 570px;
+    height: auto;
+    background-color: #0A081F;
+}
+
+header {
+    margin: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #0A081F;
+    color: #FEC803;
+    min-width: 360px;
+}
+
+.containerLogo{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#imgLogo {
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    margin: 10px;
+}
+
+#escritaLogo {
+    font-size: 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCorpoLogin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.containerSenha {
+    width: 330px;
+    display: flex;
+}
+
+.inputsUsuario {
+    padding-left: 5px;
+    margin: 0;
+    width: 320px;
+    height: 58px;
+    border-radius: 15px;
+    margin-top: 10px;
+    font-size: 2em;
+    color: black;
+}
+
+::-webkit-input-placeholder {
+    color: #504D4D;
+ }
+
+ :-moz-placeholder { /* Firefox 18- */
+    color: #504D4D;
+ }
+
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: #504D4D;
+ }
+
+ :-ms-input-placeholder {
+    color: #504D4D;
+ }
+
+#imagemVisibilidadeSenha {
+    position: relative;
+    left: -60px;
+    top: 20px;
+    width: 50px;
+    height: 40px;
+}
+
+#esqueceuSenha {
+    margin-top: 5px;
+    font-size: 20px;
+    background-color: #0A081F;
+    color: #FEC803;
+    text-decoration: underline;
+    border: 0;
+}
+
+#entrar {
+    background-color: #FEC803;
+    text-decoration: underline;
+    font-size: 60px;
+    font-weight: bolder;
+    min-width: 310px;
+    height: 100px;
+    margin: 10px;
+}
+
+#cadastrese {
+    background-color: #0A081F;
+    color: #FEC803;
+    border: 0;
+    font-size: 30px;
+    text-decoration: underline;
+}
