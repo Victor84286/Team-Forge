@@ -11,3 +11,4 @@ function alteraEscrita () {
         checkerMode = 0;
     }
 }
+

@@ -49,7 +49,10 @@ header {
 
 .containerSenha {
     width: 330px;
+    height: 107px;
     display: flex;
+    flex-flow: column;
+    overflow: hidden;
 }
 
 .inputsUsuario {
@@ -59,8 +62,13 @@ header {
     height: 58px;
     border-radius: 15px;
     margin-top: 10px;
-    font-size: 2em;
+    font-size: 1.5em;
     color: black;
+}
+
+#senhaUsuario {
+    width: 320px;
+    height: 60px;
 }
 
 ::-webkit-input-placeholder {
@@ -81,14 +89,16 @@ header {
 
 #imagemVisibilidadeSenha {
     position: relative;
-    left: -60px;
-    top: 20px;
+    right: -270px;
+    top: -54px;
     width: 50px;
     height: 40px;
+    cursor: pointer;
 }
 
 #esqueceuSenha {
-    margin-top: 5px;
+    position: relative;
+    top: -30px;
     font-size: 20px;
     background-color: #0A081F;
     color: #FEC803;
@@ -97,6 +107,8 @@ header {
 }
 
 #entrar {
+    position: relative;
+    top: -30px;
     background-color: #FEC803;
     text-decoration: underline;
     font-size: 60px;
@@ -104,9 +116,13 @@ header {
     min-width: 310px;
     height: 100px;
     margin: 10px;
+    cursor: pointer;
+
 }
 
 #cadastrese {
+    position: relative;
+    top: -35px;
     background-color: #0A081F;
     color: #FEC803;
     border: 0;
