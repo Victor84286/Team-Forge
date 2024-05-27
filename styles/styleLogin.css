@@ -4,6 +4,7 @@ body {
     min-height: 570px;
     height: auto;
     background-color: #0A081F;
+    font-family: 'inter', Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -99,10 +100,10 @@ header {
 #esqueceuSenha {
     position: relative;
     top: -30px;
-    font-size: 20px;
+    font-size: 30px;
     background-color: #0A081F;
     color: #FEC803;
-    text-decoration: underline;
+    text-decoration: none;
     border: 0;
 }
 
@@ -110,7 +111,6 @@ header {
     position: relative;
     top: -30px;
     background-color: #FEC803;
-    text-decoration: underline;
     font-size: 60px;
     font-weight: bolder;
     min-width: 310px;
@@ -127,5 +127,5 @@ header {
     color: #FEC803;
     border: 0;
     font-size: 30px;
-    text-decoration: underline;
+    text-decoration: none;
 }

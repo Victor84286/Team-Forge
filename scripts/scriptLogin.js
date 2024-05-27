@@ -1,5 +1,5 @@
-//import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-//import { auth } from './scriptGeral';
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { auth } from './scriptGeral.js';
 
 function login() {
   signInWithEmailAndPassword(auth,
@@ -10,6 +10,7 @@ function login() {
     const user = userCredential.user;
     console.log('uid', user.uid);
     console.log('accessToken', user.accessToken);
+    window.location.href = 'homeLider.html';
     // ...
   })
   .catch((error) => {
@@ -18,22 +19,30 @@ function login() {
     console.log(errorCode);
     console.log(errorMessage);
   });
-}
+};
 
-let visibilidade = 1
+let visibilidade = 1;
 
 function alterarVisibilidade () {
-  console.log("msadokmsaodkm")
+  console.log("msadokmsaodkm");
   if (visibilidade === 1) {
     document.getElementById('imagemVisibilidadeSenha').src = 'assetsApp\\olho.png';
     document.getElementById('imagemVisibilidadeSenha').style = 'height: 31px;top: -50px;';
     document.getElementById('senhaUsuario').type = 'text';
-    visibilidade = 2
-  }
-  else if(visibilidade === 2){
+    visibilidade = 2;
+  } else if(visibilidade === 2) {
     document.getElementById('imagemVisibilidadeSenha').src = 'assetsApp\\olho cortado.png';
     document.getElementById('imagemVisibilidadeSenha').style = 'height: 40px;';
     document.getElementById('senhaUsuario').type = 'password';
-    visibilidade = 1
+    visibilidade = 1;
   }
 }
+
+
+let botao_entrar = document.getElementById("entrar");
+botao_entrar.addEventListener('click', login);
+
+let botao_visibilidade = document.getElementById("imagemVisibilidadeSenha");
+botao_visibilidade.addEventListener('click', alterarVisibilidade);
+
+export { login, alterarVisibilidade };

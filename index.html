@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/styleLogin.css">
-    <script src="scripts/scriptLogin.js" defer></script>
+    <script src="scripts/scriptLogin.js" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -18,12 +18,12 @@
         <input type="email" name="Email" id="emailUsuario" class="inputsUsuario" placeholder="Email"/>
         <div class="containerSenha">
             <input type="password" name="Senha" id="senhaUsuario" class="inputsUsuario" placeholder="Senha" style="height: 60px;"/>
-            <img src="assetsApp/olho cortado.png" onclick="alterarVisibilidade()" alt="Senha escondida" id="imagemVisibilidadeSenha"/>
+            <img src="assetsApp/olho cortado.png" alt="Senha escondida" id="imagemVisibilidadeSenha"/>
         </div>
         <a id="esqueceuSenha" type="button" href="./esqueceuSuaSenha.html">
             <p style="margin: 0;">Esqueceu sua senha?</p>
         </a>
-        <input id="entrar" type="button" onclick="login()" value="Entrar">
+        <input id="entrar" type="button" value="Entrar">
         <a id="cadastrese" href="./cadastro.html">
             <p style="margin: 0;">Cadastre-se</p>
         </a>
