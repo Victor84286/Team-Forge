@@ -16,11 +16,11 @@
     </header>
 
     <div class="containerCorpo">
-        <div class="switch__container">
-            <p id="escritaOpcaoCadastro" class="escritaOpcaoCadastro">Colaborador</p>
-            <input id="switch-shadow" class="switch switch--shadow" type="checkbox" />
-            <label for="switch-shadow"></label>
-        </div>
+        <select id="selecioneOpcao" class="inputsUsuario">
+            <option value="ahhh" id="opcaoSelecione">selecione a opcao</option>
+            <option value="0">Colaborador</option>
+            <option value="1">líder</option>
+        </select>
         <input type="text" name="Nome usuário" id="nomeUsuario" class="inputsUsuario" placeholder="Nome">
         <input type="email" name="Email Usuario" id="emailUsuario" class="inputsUsuario" placeholder="Email">
         <input type="text" name="Nome da empresa" id="nomeEmpresa" class="inputsUsuario" placeholder="Nome da Empresa">
@@ -30,7 +30,7 @@
         </div>
         <div class="containerSenha">
             <input type="password" name="Confirmação de Senha Usuario" id="ConfirmaSenhaUsuario" class="inputsUsuario" placeholder="Confirmar senha">
-            <img src="assetsApp/olho cortado.png" alt="Senha escondida" id="imagemVisibilidadeSenha"/>
+            <img src="assetsApp/olho cortado.png" alt="Senha escondida" id="imagemVisibilidadeSenhaConfirmacao"/>
         </div>
         <input id="cadastrese" type="button" value="Cadastrar">
         <a id="entrar" type="button" href="./index.html">

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="styles/styleHomeLider.css">
+    <script src="scripts/scriptCriaProjeto.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles/styleCriarProjeto.css">
 </head>
 <body>
     <header>
@@ -15,9 +15,18 @@
         </div>
     </header>
     <div class="containerBody">
-        <a class="containerNovoProjeto">
-            <p class="botaoNvovoProjeto">+</p>
-        </a>
+        <div id="cabecalhoProjeto">
+            <input type="text" name="nome Projeto" id="nomeProjeto" placeholder="Nome do projeto">
+        </div>
+        <div id="containerColaboradores" class="containerColaboradores">
+            <p class="escritaIndicacao">Colaboradores</p>
+            <input id="adicionarColaborador" type="button" value="+">
+        </div>
+        <div class="containerCompetencias">
+            <p class="escritaIndicacao">Competências</p>
+            <input id="adicionarCompetencia" type="button" value="+">
+        </div>
+        <input type="button" value="Criar Projeto" id="botaoCriar">
     </div>
 
     <footer>

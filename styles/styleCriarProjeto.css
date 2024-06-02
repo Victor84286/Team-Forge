@@ -44,27 +44,63 @@ header {
 
 }
 
-.containerNovoProjeto {
-    margin-top: 10px;
-    width: 100%;
+.containerBody {
     display: flex;
-    justify-content: center;
+    flex-flow: column;
     align-items: center;
+    justify-content: center;
+
+    color: #FEC803;
 }
 
-.botaoNvovoProjeto {
-    margin: auto 10px auto 0;
-    width: 200px;
-    height: 50px;
-    background-color: #39B045;
+.escritaIndicacao {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 3px 3px 4px #39B045,
+
+    font-size: 30px;
+    margin: 10px 0 5px;
+}
+
+#adicionarCompetencia, #adicionarColaborador, #botaoCriar {
+
+    border: 0;
+    width: 320px;
+    height: 50px;
+    margin-top: 5px;
+
+    background-color: #39B045;
+    box-shadow:
+    3px 3px 4px #39B045,
     -3px -3px 4px #39B045,
     -3px 3px 4px #39B045,
     3px -3px 4px #39B045;
-    font-size: 60px;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.containerCompetencias, .containerColaboradores {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.competencia, .colaborador, #nomeProjeto {
+    margin: 5px 0;
+    width: 320px;
+    height: 45px;
+    padding: auto 5px;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+#botaoCriar {
+    margin-top: 18px;
+
 }
 
 .containerPerfil {

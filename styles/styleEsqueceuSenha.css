@@ -89,7 +89,7 @@ header {
 
 #enviarEmail {
     background-color: #FEC803;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 50px;
     font-weight: bolder;
     min-width: 310px;
@@ -100,11 +100,10 @@ header {
 
 #cancelarAlteracaoSenha {
     margin: 0;
-    background-color: #0A081F;
     color: #FEC803;
     border: 0;
     font-size: 30px;
-    text-decoration: underline;
+    text-decoration: none;
     margin-bottom: 20px;
     text-align: center;
 
