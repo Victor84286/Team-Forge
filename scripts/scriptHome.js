@@ -1,48 +1,80 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { getDatabase, ref as databaseRef, child, get, set as dbSet  } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+import { auth, onAuthStateChanged, child, get, dbRef } from "./scriptGeral.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB4xaVxDsfBcb8jPGgxvfcH87S2IF3QQCg",
-    authDomain: "teamforge-c553c.firebaseapp.com",
-    databaseURL: "https://teamforge-c553c-default-rtdb.firebaseio.com",
-    projectId: "teamforge-c553c",
-    storageBucket: "teamforge-c553c.appspot.com",
-    messagingSenderId: "404114126474",
-    appId: "1:404114126474:web:40d1a72900762d34f11f73"
-  };
+let tipo;
+let quantidadeProjetos;
+get(child(dbRef, `numeroProjetos`)).then((ahhh) => {
+    if (ahhh.exists()) {
 
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth();
-
-const dbRef = databaseRef(database);
-
+      quantidadeProjetos = parseInt(ahhh.val()["quantidadeProjetos"]);
+    }
+});
 
 onAuthStateChanged(auth, (user) => {
-  if (user){
-    get(child(dbRef, `projeto/${user.email.slice(0, user.email.indexOf("."))}`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-        let containerProjetos = document.getElementById("containerProjetos");
-
-        // Cria um novo elemento input
-        let containerCard = document.createElement("div");
-        containerCard.className = "containerCard";
-        let nomeProjeto = document.createElement("p");
-        nomeProjeto.innerHTML = "hhh";
-        // containerCard.appendChild(nomeProjeto);
-        containerProjetos.parentNode.appendChild(nomeProjeto);
-
-
-      } else {
-        console.log("No data available");
+  if (user) {
+    get(child(dbRef, `user/${user.email.slice(0, user.email.indexOf("@"))}`)).then((usuario) => {
+      if (usuario.exists()) {
+        tipo = parseInt(usuario.val()['tipoUser']);
       }
-    }).catch((error) => {
-      console.error(error);
     });
-  }
-})
+    get(child(dbRef, `projeto/${user.email.slice(0, user.email.indexOf("@"))}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          if(tipo === 1){
+            let botao_a = document.createElement("a");
+            botao_a.className = "containerNovoProjeto";
+            botao_a.href = "criarProjeto.html";
+
+            let escritaBotao = document.createElement("p");
+            escritaBotao.className = "botaoNvovoProjeto";
+            escritaBotao.textContent  = "+";
+
+            // Obtém o elemento de referência
+            let referencia = document.getElementById("containerProjetos");
+
+            // Insere o novo input antes do elemento de referência
+            referencia.parentNode.insertBefore(botao_a, referencia);
+            botao_a.appendChild(escritaBotao);
+            console.log(botao_a);
+          }
+          let containerProjetos = document.getElementById("containerProjetos");
+          let referenciaProjetos = snapshot.val();
+          for (let i = 0; i < quantidadeProjetos; i++) {
+            let projeto = referenciaProjetos["projeto0"];
+            console.log(projeto["colaborador"][0]["nome"])
+            // Cria um novo elemento input
+            let containerCard = document.createElement("div");
+            containerCard.className = "containerCard";
+            let nomeProjeto = document.createElement("h2");
+            nomeProjeto.innerHTML = projeto["nome"];
+            containerCard.appendChild(nomeProjeto);
+
+            let escritaColaboradores = document.createElement("h3");
+            escritaColaboradores.innerHTML = "Colaboradores";
+            containerCard.appendChild(escritaColaboradores);
+
+            for (let j = 0; j < projeto["numeroColaboradores"]; j++) {
+              let colaboradorNome = document.createElement("p");
+              colaboradorNome.innerHTML = projeto["colaborador"][j]["nome"];
+              containerCard.appendChild(colaboradorNome);
+            }
+
+            let escritaCompetencias = document.createElement("h3");
+            escritaCompetencias.innerHTML = "Competências";
+            containerCard.appendChild(escritaCompetencias);
+
+            for (let j = 0; j < projeto["numeroCompetencias"]; j++) {
+              let colaboradorNome = document.createElement("p");
+              colaboradorNome.innerHTML = projeto["competencia"][j]["competencia"];
+              containerCard.appendChild(colaboradorNome);
+            }
+            containerProjetos.appendChild(containerCard);
+          }
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else window.location.href = "/";
+});

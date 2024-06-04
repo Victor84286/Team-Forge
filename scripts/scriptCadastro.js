@@ -1,4 +1,4 @@
-import { auth, databaseRef, dbSet, dbRef, database, createUserWithEmailAndPassword } from './scriptGeral.js';
+import { auth, databaseRef, dbSet, database, createUserWithEmailAndPassword } from './scriptGeral.js';
 
 let visibilidade = 1;
 let removido = 0;
@@ -9,52 +9,41 @@ function criarUsuario() {
     let nomeEmpresa = document.getElementById("nomeEmpresa").value;
     let senha = document.getElementById("senhaUsuario").value;
     let senhaconfirmacao = document.getElementById("ConfirmaSenhaUsuario").value;
-    let tipoFuncionario = parseInt(document.getElementById("selecioneOpcao").value, 10);  // Convertendo para número
+    let tipoUser = parseInt(document.getElementById("selecioneOpcao").value, 10);  // Convertendo para número
 
     console.log("Valores obtidos dos campos:");
-    console.log({ nome, email, nomeEmpresa, senha, senhaconfirmacao, tipoFuncionario });
+    console.log({ nome, email, nomeEmpresa, senha, senhaconfirmacao, tipoUser });
 
     // cria autenticacao para usuario
     if (senha === senhaconfirmacao) {
         createUserWithEmailAndPassword(auth, email, senha)
             .then((userCredential) => {
                 // Signed up
-                let emailKey = email.slice(0, email.indexOf("."));
-                console.log("Email processado: ", emailKey);
+                let emailKey = email.slice(0, email.indexOf("@"));
 
                 // cria tipo de usuario
-                dbSet(databaseRef(database, "tipoUsuario/" + emailKey), {
-                    tipo: tipoFuncionario
+                dbSet(databaseRef(database, "projeto/" + emailKey), {
+                    quantidadeProjetos: 0
                 });
 
-                // cria usuario de acordo com o tipo
-                console.log("Valor de tipoFuncionario: ", tipoFuncionario);
-                if (tipoFuncionario === 1) {
-                    dbSet(databaseRef(database, "lider/" + emailKey), {
-                        nomeEmpresa: nomeEmpresa,
-                        nome: nome
-                    });
-
+                dbSet(databaseRef(database, "user/" + emailKey), {
+                    nomeEmpresa: nomeEmpresa,
+                    nome: nome,
+                    tipoUser: tipoUser
+                });
+                if (tipoUser === 1) {
                     // cria empresa
                     dbSet(databaseRef(database, "empresa"), {
                         nome: nomeEmpresa
                     });
-                    console.log("Lider e empresa criados.");
-                } else if (tipoFuncionario === 0) {
-                    dbSet(databaseRef(database, "colaborador/" + nomeEmpresa + "/" + emailKey), {
-                        nome: nome
-                    });
-                    console.log("Colaborador criado.");
-                } else {
-                    console.log("Valor inesperado de tipoFuncionario: ", tipoFuncionario);
                 }
+            window.location.href = '/';
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.error("Erro na criação do usuário:", errorCode, errorMessage);
             });
-            window.location.href = '/';
     } else {
         console.error("As senhas não correspondem.");
     }

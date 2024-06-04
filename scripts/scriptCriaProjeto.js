@@ -1,51 +1,81 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { auth, databaseRef, dbSet, database, createUserWithEmailAndPassword } from './scriptGeral.js';
+import { auth, databaseRef, get, child, dbRef, dbSet, database } from './scriptGeral.js';
 
 let colaboradorNum = 0;
 let competenciaNum = 0;
 
 function criaProjeto () {
-
+    let quantidadeProjetos = 0;
     onAuthStateChanged(auth, (user) => {
         if (user){
+            get(child(dbRef, `numeroProjetos`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    quantidadeProjetos = snapshot.val()['quantidadeProjetos'];
+                    console.log(quantidadeProjetos);
+                }
+            });
+
             let colaboradores = [];
             let competencias = [];
 
             let nome = document.getElementById("nomeProjeto").value;
-            let emailKey = user.email.slice(0, user.email.indexOf("."));
+            let emailKey = user.email.slice(0, user.email.indexOf("@"));
 
 
             for (let i = 1; i<=colaboradorNum; i++){
-                console.log(document.getElementById("colaborador"+i).value);
                 colaboradores.push(document.getElementById("colaborador"+i).value);
-            }
-
-            dbSet(databaseRef(database, "projeto/" + emailKey + "/" + nome + "/numColaboradores"), {
-                numero: colaboradorNum
-            });
-
-            dbSet(databaseRef(database, "projeto/" + emailKey + "/" + nome + "/numCompetencias"), {
-                numero: competenciaNum
-            });
-            // adiciona usuario a projeto
-            for (let i = 0; i<colaboradorNum; i++){
-                dbSet(databaseRef(database, "projeto/" + emailKey + "/" + nome + "/colaborador/" + i), {
-                    nome: colaboradores[i]
-                });
             }
 
             for (let i = 1; i<=competenciaNum; i++){
                 competencias.push(document.getElementById("competencia"+i).value);
             }
+
+            dbSet(databaseRef(database, "projeto/" + emailKey + `/projeto${quantidadeProjetos}`), {
+                nome: nome,
+                numeroColaboradores: colaboradorNum,
+                numeroCompetencias: competenciaNum
+            });
+            // adiciona usuario a projeto
+            for (let i = 0; i<colaboradorNum; i++){
+
+                dbSet(databaseRef(database, "projeto/" + emailKey + `/projeto${quantidadeProjetos}/colaborador/` + i), {
+                    nome: colaboradores[i]
+                });
+
+                dbSet(databaseRef(database, "projeto/" + colaboradores[i] + `/projeto${quantidadeProjetos}`), {
+                    nome: nome,
+                    numeroColaboradores: colaboradorNum,
+                    numeroCompetencias: competenciaNum
+                });
+                // adiciona usuario a projeto
+                for (let j = 0; j<colaboradorNum; j++){
+                    dbSet(databaseRef(database, "projeto/" + colaboradores[i] + `/projeto${quantidadeProjetos}` + "/colaborador/" + j), {
+                        nome: colaboradores[j]
+                    });
+                }
+                // adiciona competencia a projeto
+                for (let j = 0; j<competenciaNum; j++){
+                    dbSet(databaseRef(database, "projeto/" + colaboradores[i] + `/projeto${quantidadeProjetos}` + "/competencia/" + j), {
+                        competencia: competencias[j]
+                    });
+                }
+            }
             // adiciona competencia a projeto
             for (let i = 0; i<competenciaNum; i++){
-                dbSet(databaseRef(database, "projeto/" + emailKey + "/" + nome + "/competencia/" + i), {
+                dbSet(databaseRef(database, "projeto/" + emailKey + `/projeto${quantidadeProjetos}` + "/competencia/" + i), {
                     competencia: competencias[i]
                 });
             }
 
+            quantidadeProjetos++
+            dbSet(databaseRef(database, "numeroProjetos"), {
+                quantidadeProjetos: quantidadeProjetos
+            });
+
+            window.location.href = '/home.html';
+
         } else {
-          document.getElementById('info').innerHTML = 'saiu';
+            window.location.href = '/';
         }
     });
 
