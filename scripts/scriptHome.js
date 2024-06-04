@@ -2,10 +2,9 @@ import { auth, onAuthStateChanged, child, get, dbRef } from "./scriptGeral.js";
 
 let tipo;
 let quantidadeProjetos;
-get(child(dbRef, `numeroProjetos`)).then((ahhh) => {
-    if (ahhh.exists()) {
-
-      quantidadeProjetos = parseInt(ahhh.val()["quantidadeProjetos"]);
+get(child(dbRef, `numeroProjetos`)).then((quantidade) => {
+  if(quantidade.exists()) {
+      quantidadeProjetos = parseInt(quantidade.val()["quantidadeProjetos"]);
     }
 });
 
