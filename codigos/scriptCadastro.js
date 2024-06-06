@@ -37,7 +37,7 @@ function criarUsuario() {
                         nome: nomeEmpresa
                     });
                 }
-            window.location.href = '/';
+            window.location.href = '/Team-Forge/';
             })
             .catch((error) => {
                 const errorCode = error.code;

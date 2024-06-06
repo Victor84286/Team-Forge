@@ -75,5 +75,5 @@ onAuthStateChanged(auth, (user) => {
       .catch((error) => {
         console.error(error);
       });
-  } else window.location.href = "/";
+  } else window.location.href = '/Team-Forge/';
 });
