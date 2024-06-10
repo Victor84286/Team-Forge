@@ -9,10 +9,7 @@ function criarUsuario() {
     let nomeEmpresa = document.getElementById("nomeEmpresa").value;
     let senha = document.getElementById("senhaUsuario").value;
     let senhaconfirmacao = document.getElementById("ConfirmaSenhaUsuario").value;
-    let tipoUser = parseInt(document.getElementById("selecioneOpcao").value, 10);  // Convertendo para número
-
-    console.log("Valores obtidos dos campos:");
-    console.log({ nome, email, nomeEmpresa, senha, senhaconfirmacao, tipoUser });
+    let tipoUser = parseInt(document.getElementById("selecioneOpcao").value);  // Convertendo para número
 
     // cria autenticacao para usuario
     if (senha === senhaconfirmacao) {
@@ -37,7 +34,7 @@ function criarUsuario() {
                         nome: nomeEmpresa
                     });
                 }
-            window.location.href = '/Team-Forge/';
+                window.location.href = "/";
             })
             .catch((error) => {
                 const errorCode = error.code;

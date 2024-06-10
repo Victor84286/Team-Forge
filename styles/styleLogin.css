@@ -48,6 +48,13 @@ header {
     align-items: center;
 }
 
+.avisoSenha {
+    display: none;
+    margin-bottom: 0;
+    font-size: 20px;
+    color: red;
+}
+
 .containerSenha {
     width: 330px;
     height: 107px;

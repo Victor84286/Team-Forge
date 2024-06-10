@@ -18,6 +18,7 @@ function login() {
     const errorMessage = error.message;
     console.log(errorCode);
     console.log(errorMessage);
+    document.getElementById('avisoSenha').style = 'display: relative;';
   });
 };
 
