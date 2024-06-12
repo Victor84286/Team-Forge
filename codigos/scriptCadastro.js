@@ -34,7 +34,7 @@ function criarUsuario() {
                         nome: nomeEmpresa
                     });
                 }
-                window.location.href = "/";
+                window.location.href = "/index.html";
             })
             .catch((error) => {
                 const errorCode = error.code;

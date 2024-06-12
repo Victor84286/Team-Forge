@@ -73,6 +73,54 @@ header {
   text-decoration: none;
 }
 
+.botaoRemoverProjeto {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 300px;
+  font-size: 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: #FF0305;
+}
+
+.popUp {
+  border: #0a081f 2px solid;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  top: 110px;
+  background-color: #ecf0f6;
+  width: 320px;
+  color: #0a081f;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+#escritaNomeProjeto {
+  margin: 5px 0;
+  text-align: center;
+}
+
+#nomeProjetoRemover {
+  font-size: 20px;
+}
+
+.subescritoPopUp {
+  display: block;
+  font-size: 20px;
+}
+
+#botaoRemoveBanco {
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+  border: 0;
+  color: #fec803;
+  font-size: 30px;
+  background-color: #0a081f;
+}
+
 .containerProjetos {
   color: white;
   display: flex;
@@ -119,32 +167,32 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   background-color: #0a081f;
   color: #fec803;
   overflow: hidden;
 }
 
-#containerImagemPerfil {
-  height: 100px;
-  width: 100px;
-  border-radius: 25px;
-  overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#ImagemPerfil {
-  max-width: 130px;
-  position: relative;
-}
-
 .nomePerfil {
+  height: 41px;
+  max-width: 200px;
+  text-anchor: start;
+  text-align: left;
+  overflow: hidden;
   font-size: 2em;
 }
 
 .espacofooter {
   color: none;
   height: 160px;
+  width: 100%;
+}
+
+#botaoLogout {
+  background-color: #0a081f;
+  color: #FF0305;
+  border: 0;
+  margin-left: 3px;
+  font-size: 20px;
+  right: 5px;
 }

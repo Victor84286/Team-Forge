@@ -102,3 +102,12 @@ header {
 .nomePerfil {
     font-size: 2em;
 }
+
+#botaoLogout {
+  background-color: #0a081f;
+  color: #FF0305;
+  border: 0;
+  margin-left: 3px;
+  font-size: 20px;
+  right: 5px;
+}

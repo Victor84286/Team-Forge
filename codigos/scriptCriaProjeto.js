@@ -166,3 +166,12 @@ botao_adicionar_colaborador.addEventListener("click", adicionarColaborador);
 
 let botao_criar = document.getElementById("botaoCriar");
 botao_criar.addEventListener("click", criaProjeto);
+
+
+function fazerLogout() {
+  window.location.href ="/index.html";
+}
+
+
+let botaoLogout = document.getElementById("botaoLogout");
+botaoLogout.addEventListener('click', fazerLogout);
