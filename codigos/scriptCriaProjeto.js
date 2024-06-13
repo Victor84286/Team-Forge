@@ -113,7 +113,7 @@ function criaProjeto() {
             quantidadeProjetos: quantidadeProjetos,
           });
 
-          window.location.href = "/home.html";
+          window.location.href = "./home.html";
         } else {
           window.location.href = "/";
         }
@@ -169,7 +169,7 @@ botao_criar.addEventListener("click", criaProjeto);
 
 
 function fazerLogout() {
-  window.location.href ="/index.html";
+  window.location.href ="./index.html";
 }
 
 

@@ -25,7 +25,7 @@ onAuthStateChanged(auth, (user) => {
           if (tipo === 1) {
             let botao_a = document.createElement("a");
             botao_a.className = "containerNovoProjeto";
-            botao_a.href = "criarProjeto.html";
+            botao_a.href = "./criarProjeto.html";
 
             let escritaBotao = document.createElement("p");
             escritaBotao.className = "botaoNvovoProjeto";
@@ -167,7 +167,7 @@ function removeBancoDados() {
 }
 
 function fazerLogout() {
-  window.location.href = "/index.html";
+  window.location.href = "./index.html";
 }
 
 let botaoLogout = document.getElementById("botaoLogout");

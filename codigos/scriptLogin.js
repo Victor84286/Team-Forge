@@ -10,7 +10,7 @@ function login() {
     const user = userCredential.user;
     console.log('uid', user.uid);
     console.log('accessToken', user.accessToken);
-    window.location.href = 'home.html';
+    window.location.href = './home.html';
     // ...
   })
   .catch((error) => {
