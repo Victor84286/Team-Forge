@@ -1,4 +1,4 @@
-import { auth, onAuthStateChanged, child, get, dbRef } from "./scriptGeral.js";
+import { auth, onAuthStateChanged, remove, child, get, dbRef } from "./scriptGeral.js";
 
 let tipo;
 let quantidadeProjetos;
@@ -37,21 +37,7 @@ onAuthStateChanged(auth, (user) => {
             // Insere o novo input antes do elemento de referência
             referencia.parentNode.insertBefore(botao_a, referencia);
             botao_a.appendChild(escritaBotao);
-            let botao_remover_projeto = document.createElement("input");
-            botao_remover_projeto.className = "botaoRemoverProjeto";
-            botao_remover_projeto.type = "button";
-            botao_remover_projeto.value = "Remover Projeto";
-            botao_remover_projeto.addEventListener("click", removerProjeto);
 
-            // Obtém o elemento de referência
-            let referenciaRemover =
-              document.getElementById("containerProjetos");
-
-            // Insere o novo input antes do elemento de referência
-            referenciaRemover.parentNode.insertBefore(
-              botao_remover_projeto,
-              referenciaRemover
-            );
           }
           let containerProjetos = document.getElementById("containerProjetos");
           let referenciaProjetos = snapshot.val();
@@ -142,29 +128,18 @@ function removeBancoDados() {
               let colaborador = `colaborador/${j}['nome']`;
               get(child(dbRef, `projeto/${prj[colaborador]}`)).then(
                 (projetoColaborador) => {
-                  dbSet(databaseRef(projetoColaborador + `/projeto${i}`), {
-                    colaborador: null,
-                    competencia: null,
-                    nome: null,
-                    numeroColaboradores: null,
-                    numeroCompetencias: null,
-                  });
+                  remove(databaseRef(projetoColaborador + `/projeto${i}`));
                 }
               );
             }
-            dbSet(databaseRef(prj), {
-              colaborador: null,
-              competencia: null,
-              nome: null,
-              numeroColaboradores: null,
-              numeroCompetencias: null,
-            });
+            remove(databaseRef(prj));
           }
         }
       }
     });
   });
 }
+
 
 function fazerLogout() {
   window.location.href = "./index.html";
